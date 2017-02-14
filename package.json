@@ -1,0 +1,14 @@
+{
+  "name": "bunco",
+  "version": "1.0.0",
+  "description": "This respoistory contains representative solutions for a Bunco game.",
+  "main": "build/index.js",
+  "author": "Curtis Schlak <curtis.schlak@theironyard.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^7.0.5",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.4",
+    "typescript": "^2.1.6"
+  }
+}
