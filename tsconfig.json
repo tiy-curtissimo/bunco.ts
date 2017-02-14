@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ESNext",
         "noImplicitAny": false,
         "sourceMap": false,
         "outDir": "./build"
     },
     "include": [
-        "./src/**/*.ts"
+        "./**/*.ts"
     ]
 }
