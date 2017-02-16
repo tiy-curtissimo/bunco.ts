@@ -44,14 +44,37 @@ export class BuncoGame {
 
   runRound(round: number, callback: () => void): void {
     this.table.arrangePlayers();
-    let roundView = new RoundView(round, this.scorecard);
-    roundView.run(this.table.player(0), () => {
+    let view = new RoundView(round, this.scorecard);
+    this.runPlayersInRound(round, view, callback);
+  }
+
+  runPlayersInRound(round: number, view: RoundView, callback: () => void): void {
+    console.log("");
+    view.run(this.table.player(0), () => {
       console.log("");
-      roundView.run(this.table.player(1), () => {
+      if (this.scorecard.roundEnded(round)) {
+        callback();
+        return;
+      }
+      view.run(this.table.player(1), () => {
         console.log("");
-        roundView.run(this.table.player(2), () => {
+        if (this.scorecard.roundEnded(round)) {
+          callback();
+          return;
+        }
+        view.run(this.table.player(2), () => {
           console.log("");
-          roundView.run(this.table.player(3), callback);
+          if (this.scorecard.roundEnded(round)) {
+            callback();
+            return;
+          }
+          view.run(this.table.player(3), () => {
+            if (this.scorecard.roundEnded(round)) {
+              callback();
+            } else {
+              this.runPlayersInRound(round, view, callback);
+            }
+          });
         });
       });
     });

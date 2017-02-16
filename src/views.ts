@@ -19,7 +19,7 @@ export class RoundView {
   run(player: Player, callback: () => void): void {
     let spaceEvent = onCharFactory(' ');
     player.roll(spaceEvent, (roll: number[]) => {
-      if (this.scorecard.registerRoll(player, this.round, roll)) {
+      if (this.scorecard.registerRoll(player, this.round, roll) && !this.scorecard.roundEnded(this.round)) {
         this.run(player, callback);
       } else {
         callback();

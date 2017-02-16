@@ -37,6 +37,10 @@ export class Scorecard {
     return this.scores.reduce((acc, v) => v[player.index] === max(v) ? acc + 1 : acc, 0);
   }
 
+  roundEnded(roundNumber: number): boolean {
+    return this.scores[roundNumber - 1].find(x => x >= 21) !== undefined;
+  }
+
   get winners(): string {
     let highScore = 0;
     let winners = [];
